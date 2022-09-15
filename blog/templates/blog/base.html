@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %} Ficticia Inc.</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="{% static 'front/img/favicon.png' %}" rel="shortcut icon">
+  <link href="{% static 'front/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static 'front/lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'front/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'front/lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'front/lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'front/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'front/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'front/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: DevFolio
+    Theme URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+
+      <!-- Specific Page CSS goes HERE  -->
+      {% block stylesheets %}{% endblock stylesheets %}
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navbar -->
+    {% include 'blog/navbar.html' %}
+
+    <!-- Content -->
+    {% block content %}
+    {% endblock content %}
+
+    <!-- Footer -->
+    {% include 'blog/footer.html' %}
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'front/lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'front/lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'front/lib/popper/popper.min.js' %}"></script>
+  <script src="{% static 'front/lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'front/lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'front/lib/counterup/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'front/lib/counterup/jquery.counterup.js' %}"></script>
+  <script src="{% static 'front/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'front/lib/lightbox/js/lightbox.min.js' %}"></script>
+  <script src="{% static 'front/lib/typed/typed.min.js' %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'front/contactform/contactform.js' %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'front/js/main.js' %}"></script>
+
+    <!-- Specific Page JS goes HERE  -->
+    {% block javascripts %}{% endblock javascripts %}
+
+</body>
+</html>

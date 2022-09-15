@@ -1,0 +1,15 @@
+{% load static %}
+          <!-- Sección de artículos recientes -->
+          <div class="widget-sidebar">
+            <h5 class="sidebar-title">Artículos recientes</h5>
+            <div class="sidebar-content">
+              <ul class="list-sidebar">
+                {% for articulo in articulos %}
+                <li>
+                  <a href="{% url 'ver_articulo' articulo.id %}">{{ articulo.title }}</a> <br />
+                  [{{ articulo.date }}]
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>

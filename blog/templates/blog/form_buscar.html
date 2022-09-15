@@ -1,0 +1,12 @@
+{% load static %}
+              <form action="{% url 'resultados_busqueda' %}" method="POST">
+                {% csrf_token %}
+                <div class="input-group">
+                  <input type="text" id="name" name="name" class="form-control" placeholder="Buscar..." aria-label="Buscar...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-secondary btn-search" type="submit">
+                      <span class="ion-android-search"></span>
+                    </button>
+                  </span>
+                </div>
+              </form>

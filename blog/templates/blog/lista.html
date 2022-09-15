@@ -1,0 +1,93 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %} {{ item.0.title }} {% endblock title %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <!--/ Section Blog Star /-->
+  <section id="blog" class="blog-mf sect-pt4 route">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center">
+            <h3 class="title-a">
+              Blog
+            </h3>
+            <p class="subtitle-a">
+              {% for pagina in paginas %}
+                {% if pagina.name == 'blog' %}
+                  {{ pagina.content|safe }}
+                {% endif %}
+              {% endfor %}
+            </p>
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buscador -->
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+
+              <!-- Form buscar -->
+              {% include 'blog/form_buscar.html' %}
+
+        </div>
+      </div>
+      
+        <br /><hr />
+
+      <!-- Artículos encontrados -->
+      <div class="row">
+        {% if articulos %}
+          {% for articulo in articulos %}
+          <div class="col-md-4">
+            <div class="card card-blog">
+              <div class="card-img">
+                <a href="{% url 'ver_articulo' articulo.id %}">
+                  <img src="{{ articulo.image.url }}" class="img-fluid img-thumbnail rounded" height="100" alt="{{ articulo.name }}">
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-category-box">
+                  <div class="card-category">
+                    <h6 class="category">{{ articulo.fk_categoria }}</h6>
+                  </div>
+                </div>
+                <h3 class="card-title"><a href="{% url 'ver_articulo' articulo.id %}">{{ articulo.title }}</a></h3>
+                <div class="card-description">
+                  {{ articulo.abstract|safe }}
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="post-author">
+                  <!--a href="#"-->
+                    <img src="{% static 'front/img/testimonial-2.jpg' %}" alt="" class="avatar rounded-circle">
+                    <span class="author">{{ articulo.fk_autor }}</span>
+                  <!--/a-->
+                </div>
+                <div class="post-date">
+                  <span class="ion-ios-calendar-outline"></span> {{ articulo.date }}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="alert alert-warning fade show" role="alert">
+            No hay artículos.
+          </div>
+        {% endif %}
+
+        </div>
+    </div>
+  </section>
+  <!--/ Section Blog End /-->
+
+  {% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

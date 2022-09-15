@@ -1,0 +1,129 @@
+{% load static %}
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'inicio' in request.path %} collapsed {% endif %}" href="{% url 'panel:app_panel_index'%}">
+          <i class="bi bi-grid"></i>
+          <span>Inicio</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-heading">Elementos de Sitio Web</li>
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'persona' in request.path %} collapsed {% endif %}" href="{% url 'panel:listar_personas'%}">
+          <i class="bx bxs-user-rectangle"></i>
+          <span>Personas</span>
+        </a>
+      </li><!-- End Personas Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'servicio' in request.path %} collapsed {% endif %}" href="{% url 'panel:listar_servicios'%}">
+          <i class="bx bxs-building-house"></i>
+          <span>Servicios</span>
+        </a>
+      </li><!-- End Servicios Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'proyecto' in request.path %} collapsed {% endif %}" href="{% url 'panel:listar_proyectos'%}">
+          <i class="bx bxs-user-pin"></i>
+          <span>Proyectos</span>
+        </a>
+      </li><!-- End Proyectos Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'mensaje' in request.path %} collapsed {% endif %}" href="{% url 'panel:listar_mensajes'%}">
+          <i class="bx bxs-user-pin"></i>
+          <span>Mensajes</span>
+        </a>
+      </li><!-- End Mensajes Nav -->
+      
+      <li class="nav-heading">Elementos de Blog</li>
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'pagina' in request.path %} collapsed {% endif %}" href="{% url 'panel:listar_paginas'%}">
+          <i class="bx bxs-file"></i>
+          <span>Páginas</span>
+        </a>
+      </li><!-- End Páginas Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'articulo' in request.path %} collapsed {% endif %}" href="{% url 'panel:listar_articulos'%}">
+          <i class="bx bx-file"></i>
+          <span>Artículos</span>
+        </a>
+      </li><!-- End Artículos Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'categoria' in request.path %} collapsed {% endif %}" href="{% url 'panel:listar_categorias'%}">
+          <i class="bx bxs-extension"></i>
+          <span>Categorías</span>
+        </a>
+      </li><!-- End Categoría Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'imagen' in request.path %} collapsed {% endif %}" href="{% url 'panel:listar_imagenes'%}">
+          <i class="bx bxs-image"></i>
+          <span>Imágenes</span>
+        </a>
+      </li><!-- End Imágenes Nav -->
+
+
+      <li class="nav-heading">Configuración</li>
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'perfil' in request.path %} collapsed {% endif %}" href="#">
+          <i class="bi bi-person"></i>
+          <span>Perfil</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'faq' in request.path %} collapsed {% endif %}" href="#">
+          <i class="bi bi-question-circle"></i>
+          <span>F.A.Q</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'contacto' in request.path %} collapsed {% endif %}" href="#">
+          <i class="bi bi-envelope"></i>
+          <span>Contacto</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'registro' in request.path %} collapsed {% endif %}" href="#">
+          <i class="bi bi-card-list"></i>
+          <span>Registro</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'login' in request.path %} collapsed {% endif %}" href="#">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {% if '404' in request.path %} collapsed {% endif %}" href="#">
+          <i class="bi bi-dash-circle"></i>
+          <span>Error 404</span>
+        </a>
+      </li><!-- End Error 404 Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'blank' in request.path %} collapsed {% endif %}" href="#">
+          <i class="bi bi-file-earmark"></i>
+          <span>Blank</span>
+        </a>
+      </li><!-- End Blank Page Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->

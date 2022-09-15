@@ -1,0 +1,279 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %} {{ page }} {% endblock title %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <!--/ Intro Skew Star /-->
+  <div id="inicio" class="intro route bg-image" style="background-image: url({% static 'front/img/intro-bg.jpg' %})">
+    <div class="overlay-itro"></div>
+    <div class="intro-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          <!--<p class="display-6 color-d">Hello, world!</p>-->
+          <h1 class="intro-title mb-4">Ficticia Inc.</h1>
+          <p class="intro-subtitle"><span class="text-slider-items">Desarrollo web, Diseño web, Soluciones informáticas, Software a medida</span><strong class="text-slider"></strong></p>
+          <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/ Intro Skew End /-->
+
+  <section class="about-mf sect-pt4 route">
+    <!--div class="section-counter paralax-mf bg-image" style="background-image: url(img/counters-bg.jpg)">
+      <div class="overlay-mf"></div-->
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12" id="nosotros">
+              <div class="title-box text-center">
+                <h3 class="title-a">
+                  Nosotros
+                </h3>
+                <div class="line-mf"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="box-shadow-full">
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="about-me pt-4 pt-md-0">
+                      <div class="title-box-2">
+                        <h5 class="title-left">
+                          Empresa
+                        </h5>
+                      </div>
+                      {% for pagina in paginas %}
+                        {% if pagina.name == 'nosotros' %}
+                          {{ pagina.content|safe }}
+                        {% endif %}
+                      {% endfor %}
+
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="title-box-2">
+                      <h5 class="title-left">
+                        Equipo
+                      </h5>
+                    </div>
+
+                    {% for persona in personas %}
+                    <div class="row">
+                      <div class="col-sm-6 col-md-5">
+                        <div class="about-img">
+                          <!--img src="img/testimonial-2.jpg" class="img-fluid rounded b-shadow-a" alt=""-->
+                          <!--img src="{% static 'front/img/testimonial-2.jpg' %}" class="img-fluid rounded b-shadow-a" alt=""-->
+                          <img src="{{ persona.image.url }}" class="img-fluid rounded b-shadow-a" height="100" alt="{{ persona.name }}">
+                          
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-7">
+                        <div class="about-info">
+                          <p><span class="title-s">Nombre: </span> <span>{{ persona.name }}</span></p>
+                          {{ persona.minibio|safe }}
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                    
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!--/div>
+    </div-->
+  </section>
+  <br /><hr /><br />
+
+  <!--/ Section Services Star /-->
+  <section id="servicios" class="services-mf route">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center">
+            <br />
+            <h3 class="title-a">
+              Servicios
+            </h3>
+            <p class="subtitle-a">
+              {% for pagina in paginas %}
+                {% if pagina.name == 'servicios' %}
+                  {{ pagina.content|safe }}
+                {% endif %}
+              {% endfor %}
+            </p>
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        {% for servicio in servicios %}
+        <div class="col-md-4">
+          <div class="service-box">
+            <div class="service-ico">
+              <img src="{{ servicio.image.url }}" class="img-fluid img-thumbnail rounded b-shadow-a" height="100" alt="{{ servicio.name }}">
+            </div>
+            <div class="service-content">
+              <h2 class="s-title">{{ servicio.name }}</h2>
+              <p class="s-description text-center">
+                {{ servicio.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+  <!--/ Section Services End /-->
+  <br /><hr /><br />
+
+  <!--/ Section Portfolio Star /-->
+  <section id="proyectos" class="portfolio-mf sect-pt4 route">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center">
+            <h3 class="title-a">
+              Proyectos
+            </h3>
+            <p class="subtitle-a">
+              {% for pagina in paginas %}
+                {% if pagina.name == 'proyectos' %}
+                  {{ pagina.content|safe }}
+                {% endif %}
+              {% endfor %}
+            </p>
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        {% for proyecto in proyectos %}
+        <div class="col-md-4">
+          <div class="work-box">
+            <a href="{{ proyecto.image.url }}" data-lightbox="gallery-mf">
+              <div class="work-img">
+                <img src="{{ proyecto.image.url }}" class="img-fluid img-thumbnail rounded" height="100" alt="{{ proyecto.name }}">
+                <!--img src="img/work-1.jpg" alt="" class="img-fluid"-->
+              </div>
+              <div class="work-content">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <h2 class="w-title">{{ proyecto.name }}</h2>
+                    <div class="w-more">
+                      <span class="w-ctegory">{{ proyecto.fk_categoria }}</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="w-like">
+                      <!--span class="ion-ios-plus-outline"></span-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+
+        <div class="col-md-12">
+          <div class="text-center">
+            <!--h6 class="category">Web Design</h6-->
+            <!--a href="#" class="btn btn-primary"> Ver todos los proyectos » </a-->
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--div class="d-grid gap-2 col-6 mx-auto">
+      <a href="#" class="btn btn-primary"> Ver todo » </a>
+    </div-->
+  </section>
+  <!--/ Section Portfolio End /-->
+  <br /><hr /><br />
+
+  <!--/ Section Blog Star /-->
+  <section id="blog" class="blog-mf sect-pt4 route">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center">
+            <h3 class="title-a">
+              Blog
+            </h3>
+            <p class="subtitle-a">
+              {% for pagina in paginas %}
+                {% if pagina.name == 'blog' %}
+                  {{ pagina.content|safe }}
+                {% endif %}
+              {% endfor %}
+            </p>
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        {% for articulo in articulos %}
+        <div class="col-md-4">
+          <div class="card card-blog">
+            <div class="card-img">
+              <a href="{% url 'ver_articulo' articulo.id %}">
+                <img src="{{ articulo.image.url }}" class="img-fluid img-thumbnail rounded" height="100" alt="{{ articulo.name }}">
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="card-category-box">
+                <div class="card-category">
+                  <h6 class="category">{{ articulo.fk_categoria }}</h6>
+                </div>
+              </div>
+              <h3 class="card-title"><a href="{% url 'ver_articulo' articulo.id %}">{{ articulo.title }}</a></h3>
+              <div class="card-description">
+                {{ articulo.abstract|safe }}
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="post-author">
+                <!--a href="#"-->
+                  <img src="{% static 'front/img/testimonial-2.jpg' %}" alt="" class="avatar rounded-circle">
+                  <span class="author">{{ articulo.fk_autor }}</span>
+                <!--/a-->
+              </div>
+              <div class="post-date">
+                <span class="ion-ios-calendar-outline"></span> {{ articulo.date }}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+        <div class="col-md-12">
+          <div class="text-center">
+            <!--h6 class="category">Web Design</h6-->
+            <a href="{% url 'listar_articulos' %}" class="btn btn-primary"> Ver todos los artículos » </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!--/ Section Blog End /-->
+
+  {% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
