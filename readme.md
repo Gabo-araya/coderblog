@@ -1,4 +1,4 @@
-# Real State Site
+# Ficticia Inc.
 
 _Sitio web de venta/alquiler de inmuebles ubicado en Mallorca desarrollado con Django_
 
@@ -115,11 +115,9 @@ _Estas son las herramientas que hemos utilizado en nuestro proyecto_
 * [Django](https://www.djangoproject.com/) - El framework web usado
 
 
-## Autores ✒️
+## Autor ✒️
 
 * **[Gabo Araya](https://github.com/Gabo-araya/)** - *Backend y documentación*
-* **[Gabriel Guiridlan](https://github.com/gabguir/)** - *Backend y documentación*
-* **[Franco Fumiere](#)** - *Backend y documentación*
 
 
 
