@@ -21,8 +21,49 @@ def app_blog_index(request, *args, **kwargs):
     personas_list = Persona_Model.objects.all()[:3] # Lista de personas
     servicios_list = Servicio_Model.objects.all()[:3] # Lista de servicios
     proyectos_list = Proyecto_Model.objects.all()[:3] # Lista de proyectos
-    articulos_list = Articulo_Model.objects.filter(draft=False)[:3] # Lista de articulos
+    articulos_list = Articulo_Model.objects.filter(draft=False).order_by('date')[:3] # Lista de articulos
     paginas_list = Pagina_Model.objects.all() # Lista de paginas
+
+    '''Crear mensaje.'''
+    
+    form = Mensaje_Form()
+    error_message = ''
+    success_message = ''
+    if request.method == 'POST':
+        form = Mensaje_Form(request.POST)
+        if form.is_valid():
+            info = form.cleaned_data
+            name = info['name']
+            email = info['email']
+            subject = info['subject']
+            message = info['message']
+            
+            mensaje = Mensaje_Model(
+                name = name, 
+                email = email,
+                subject = subject,
+                message = message,
+                )
+
+            mensaje.save()
+            #return redirect('app_blog_index')
+            success_message = 'Envío exitoso'
+            #mensaje exitoso
+        
+        else:
+            #mensaje invalido
+            print("form invalido")
+            error_message = 'form invalido'
+            
+            
+            
+            
+
+    # else: 
+    #     #ningún mensaje
+    #     error_message = ''
+    #     success_message = ''
+
 
     context = {
         'page' : 'Inicio',
@@ -32,8 +73,15 @@ def app_blog_index(request, *args, **kwargs):
         'proyectos' : proyectos_list,
         'articulos' : articulos_list,
         'paginas' : paginas_list,
+        'success_message' : success_message,
+        'error_message' : error_message,
     }
     return render(request, 'blog/landing.html', context)
+    
+
+
+
+
 
 
 
@@ -63,7 +111,7 @@ def resultados_busqueda(request, *args, **kwargs):
                 Q(subtitle__icontains=termino_busqueda) |
                 Q(abstract__icontains=termino_busqueda) |
                 Q(content__icontains=termino_busqueda)
-                ).filter(draft=False)
+                ).filter(draft=False).order_by('date')
 
     paginas_list = Pagina_Model.objects.all() # Lista de paginas
     
@@ -89,7 +137,7 @@ def listar_articulos(request, *args, **kwargs):
     
     #object_list = Articulo_Model.objects.filter(draft=False) # Lista de objetos
     paginas_list = Pagina_Model.objects.all() # Lista de paginas
-    articulos_list = Articulo_Model.objects.filter(draft=False) # Lista de articulos
+    articulos_list = Articulo_Model.objects.filter(draft=False).order_by('date') # Lista de articulos
     
     context = {
         'page' : 'Blog',
@@ -109,7 +157,7 @@ def ver_articulo(request, id, *args, **kwargs):
     itemObj = Articulo_Model.objects.filter(id=id) 
     #titulo = itemObj.title
     paginas_list = Pagina_Model.objects.all() # Lista de paginas
-    articulos_list = Articulo_Model.objects.filter(draft=False)[:5] # Lista de articulos
+    articulos_list = Articulo_Model.objects.filter(draft=False) # Lista de articulos
     
     context = {
         #'page' : titulo,
@@ -123,5 +171,41 @@ def ver_articulo(request, id, *args, **kwargs):
     return render(request, 'blog/detalle.html', context)
 
 
+def crear_mensaje(request, *args, **kwargs):
+    '''Crear mensaje.'''
+    
+    form = Mensaje_Form()
+    
+    if request.method == 'POST':
+        form = Mensaje_Form(request.POST)
+        if form.is_valid():
+            info = form.cleaned_data
+            name = info['name']
+            email = info['email']
+            subject = info['subject']
+            message = info['message']
+            
+            mensaje = Mensaje_Model(
+                name = name, 
+                email = email,
+                subject = subject,
+                message = message,
+                )
 
+            mensaje.save()
+            return redirect('app_blog_index')
+
+    context = {
+        'page' : 'Crear Mensaje',
+        'icon' : 'bx bx-file',
+        'singular' : 'mensaje',
+        'plural' : 'mensajes',
+        'url_listar' : 'panel:listar_mensajes',
+        'url_crear' : 'panel:crear_mensaje',
+        'url_ver' : 'panel:ver_mensaje',
+        'url_editar' : 'panel:modificar_mensaje',
+        'url_eliminar' : 'panel:eliminar_mensaje',
+        'form': form
+    }
+    return render(request, 'panel/generic_file_form.html', context)
 

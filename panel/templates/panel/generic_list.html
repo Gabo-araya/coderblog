@@ -40,7 +40,7 @@
                     <td> {{ item.id }} </td>
 
                     <td> 
-                      {% if item.image or item.pic %}
+
                       <div class="row">
                         <div class="col-md-2">
                           {% if item.image %}
@@ -65,26 +65,14 @@
                               {% endif %}
                               {% if item.fk_categoria %}
                                 <span class="badge badge-info">{{ item.fk_categoria }}</span>
-                                {% endif %}
+                              {% endif %}
+                              {% if item.date %}
+                                <span class="badge badge-default">{{ item.date }}</span>
+                              {% endif %}
                             {% endif %}
                           </p>
                         </div>
                       </div>
-                      {% else %}
-                      <p>
-                        <a href="{% url url_ver item.id %}"> <strong>{{ item.name }}</strong></a> <br />
-                        {% if 'articulo' in request.path %} 
-                          {% if item.draft == False %}
-                            <span class="badge badge-success">Activo</span>
-                          {% else %}
-                            <span class="badge badge-warning">Borrador</span>
-                          {% endif %}
-                          {% if item.fk_categoria %}
-                            <span class="badge badge-info">{{ item.fk_categoria }}</span>
-                            {% endif %}
-                        {% endif %}
-                      </p>
-                      {% endif %}
 
                     </td>
                     <td>

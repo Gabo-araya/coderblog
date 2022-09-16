@@ -226,6 +226,18 @@
           </div>
         </div>
       </div>
+
+      <!-- Buscador -->
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+
+              <!-- Form buscar -->
+              {% include 'blog/form_buscar.html' %}
+
+        </div>
+      </div>
+      <br /><hr />
+
       <div class="row">
         {% for articulo in articulos %}
         <div class="col-md-4">
@@ -272,6 +284,15 @@
     </div>
   </section>
   <!--/ Section Blog End /-->
+
+
+  <!--/ Section Contact-Footer Star /-->
+  <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static 'front/img/overlay-bg.jpg' %})">
+    <div class="overlay-mf"></div>
+
+      <!-- Form Contacto -->
+      {% include 'blog/contacto.html' %}
+
 
   {% endblock content %}
 

@@ -567,7 +567,7 @@ def listar_mensajes(request, *args, **kwargs):
         'url_eliminar' : 'panel:eliminar_mensaje',
         'object_list': object_list
     }
-    return render(request, 'panel/mensaje_list.html', context)
+    return render(request, 'panel/generic_list_mini.html', context)
 
 
 def ver_mensaje(request, id, *args, **kwargs):
@@ -587,7 +587,7 @@ def ver_mensaje(request, id, *args, **kwargs):
         'url_eliminar' : 'panel:eliminar_mensaje',
         'item': itemObj
     }
-    return render(request, 'panel/generic_detail.html', context)
+    return render(request, 'panel/generic_detail_mini.html', context)
 
 
 # def crear_mensaje(request, *args, **kwargs):
@@ -800,7 +800,7 @@ def eliminar_pagina(request, id, *args, **kwargs):
 def listar_articulos(request, *args, **kwargs):
     '''Lista artículos.'''
     
-    object_list = Articulo_Model.objects.all() # Lista de objetos
+    object_list = Articulo_Model.objects.all().order_by('date') # Lista de objetos
     
     context = {
         'page' : 'Artículos',

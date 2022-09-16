@@ -69,8 +69,8 @@ class Proyecto_Model(models.Model):
 
     class Meta:
         ''' Define el nombre singular y plural, y el ordenamiento de los elementos. '''
-        verbose_name = 'Servicio'
-        verbose_name_plural = 'Servicios'
+        verbose_name = 'Proyecto'
+        verbose_name_plural = 'Proyectos'
         ordering = ['id']
 
     def __str__(self):
@@ -103,8 +103,8 @@ class Buscar_FrontEnd_Model(models.Model):
         
     class Meta:
         ''' Define el nombre singular y plural, y el ordenamiento de los elementos. '''
-        verbose_name = 'Búsqueda'
-        verbose_name_plural = 'Búsquedas'
+        verbose_name = 'Búsqueda FrontEnd'
+        verbose_name_plural = 'Búsquedas FrontEnd'
         ordering = ['id']
 
     def __str__(self):
@@ -206,8 +206,8 @@ class Buscar_BackEnd_Model(models.Model):
     
     class Meta:
         ''' Define el nombre singular y plural, y el ordenamiento de los elementos. '''
-        verbose_name = 'Búsqueda'
-        verbose_name_plural = 'Búsquedas'
+        verbose_name = 'Búsqueda BackEnd'
+        verbose_name_plural = 'Búsquedas BackEnd'
         ordering = ['id']
 
     def __str__(self):

@@ -1,14 +1,4 @@
 {% load static %}
-  <!--/ Section Contact-Footer Star /-->
-  <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static 'front/img/overlay-bg.jpg' %})">
-    <div class="overlay-mf"></div>
-
-    {% if 'blog' or 'bus' in request.path %}
-    {% else %}
-      <!-- Form Contacto -->
-      {% include 'blog/contacto.html' %}
-    {% endif %}
-
     <footer>
       <div class="container">
         <div class="row">
@@ -42,5 +32,3 @@
         </div>
       </div>
     </footer>
-  </section>
-  <!--/ Section Contact-footer End /-->

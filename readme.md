@@ -1,6 +1,6 @@
 # Ficticia Inc.
 
-_Sitio web de venta/alquiler de inmuebles ubicado en Mallorca desarrollado con Django_
+_Sitio web con funcionalidad de blog, búsqueda de artículos y Panel de administración_
 
 Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas.
 
@@ -87,26 +87,38 @@ _Datos de contexto para el uso del sitio web_
 ### Acceso a sección de administración de Django
 
 - [http://localhost:8000/admin/](http://localhost:8000/admin/)
-- Usuario: `admin`
-- Password: `abc123456`
+- Usuario: `test`
+- Password: `asdf.123456`
 
 ### Funcionalidades
 
-1. Buscador de inmuebles desde la sección "Home"
-	- Permite hacer una búsqueda al ingresar la ciudad donde te encontras (el alcance sólo abarca a Mallorca en este momento) y trae todos los inmuebles disponibles.
-
-2. Sección "Agents"
-   - Muestra el nombre de los agentes activos. 
-   - Contenidos pendientes.
-
-3. Opción About
+3. Navegación por contenidos del sitio
    - Muestra un resumen del propósito del sitio y sus funcionalidades.
-   - Contenidos pendientes.
+   - Cuenta con las siguientes páginas: Nosotros, Servicios, Proyectos, Blog, Visión y Footer.
+   - Acceso a lista de artículos desde el footer
+   
+2. Buscador de artículos
+	- Permite hacer una búsqueda de artículos. 
+	- Está presente en la landing page, en la lista de artículos y en cada artículo individual.
 
-4. Opción Addproperty
-   - Permite agregar nuevas propiedades, ingresando dirección, precio y ubicación. 
-   - En este caso, por ahora la ubicación es siempre Mallorca, ya que al realizar una búsqueda desde "Home", filtra todas las viviendas disponibles.
+3. Envío de mensajes
+   - Formulario de contacto desde landing page.
+   - Permite guardar mensajes en base de datos para posterior revisión desde el Panel de Aministración.
 
+4. Panel de Administración de contenidos
+   - Acceso al Panel desde el footer
+   - Permite realizar CRUD sobre Personas, Servicios, Proyectos, Mensajes, Páginas, Artículos, Categorías, Imágenes.
+
+### TODO
+
+- Activar funcionalidad de eliminación de búsquedas (front y back)
+- Agregar Login
+- Agregar CkEditor
+- Agregar recuperación de contraseña
+- Agregar registro de usuarios
+- Modificar perfil propio
+- Diferenciar tipos de usuario
+- Configurar página 404
 
 ## Herramientas de construcción 🛠️
 

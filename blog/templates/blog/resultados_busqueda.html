@@ -72,6 +72,9 @@
                         <div class="col-md-10">
                           <p>
                             <a href="{% url 'ver_articulo' item.id %}"> <strong>{{ item.name }}</strong></a> <br />
+                              {% if item.date %}
+                                <span class="badge badge-default">{{ item.date }}</span> <br />
+                              {% endif %}
                               {% if item.fk_categoria %}
                                 <span class="badge badge-info">{{ item.fk_categoria }}</span>
                               {% endif %}
@@ -81,6 +84,9 @@
                       {% else %}
                       <p>
                         <a href="{% url 'ver_articulo' item.id %}"> <strong>{{ item.name }}</strong></a> <br />
+                          {% if item.date %}
+                            <span class="badge badge-default">{{ item.date }}</span> <br />
+                          {% endif %}
                           {% if item.fk_categoria %}
                             <span class="badge badge-info">{{ item.fk_categoria }}</span>
                           {% endif %}
@@ -97,7 +103,7 @@
           </div>
         {% else %}
           <div class="alert alert-warning fade show" role="alert">
-            No existen coincidencias para "{{ termino_busqueda }}". <br />
+            No existen artículos relacionados con "{{ termino_busqueda }}". <br />
             Ingrese otro término de búsqueda.
           </div>
         {% endif %}
