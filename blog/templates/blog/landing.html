@@ -13,9 +13,17 @@
     <div class="intro-content display-table">
       <div class="table-cell">
         <div class="container">
-          <!--<p class="display-6 color-d">Hello, world!</p>-->
+          <p class="display-6 color-d">Soluciones web</p>
           <h1 class="intro-title mb-4">Ficticia Inc.</h1>
-          <p class="intro-subtitle"><span class="text-slider-items">Desarrollo web, Diseño web, Soluciones informáticas, Software a medida</span><strong class="text-slider"></strong></p>
+          <p class="intro-subtitle">
+            <span class="text-slider-items">
+              {% for item in categorias %}
+                {{ item }}, 
+              {% endfor %}
+            </span>
+            <strong class="text-slider"></strong>
+          </p>
+
           <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
         </div>
       </div>
@@ -70,7 +78,7 @@
                         <div class="about-img">
                           <!--img src="img/testimonial-2.jpg" class="img-fluid rounded b-shadow-a" alt=""-->
                           <!--img src="{% static 'front/img/testimonial-2.jpg' %}" class="img-fluid rounded b-shadow-a" alt=""-->
-                          <img src="{{ persona.image.url }}" class="img-fluid rounded b-shadow-a" height="100" alt="{{ persona.name }}">
+                          <img src="{{ persona.image.url }}" class="img-fluid rounded b-shadow-a img-thumbnail rounded-circle" height="100" alt="{{ persona.name }}">
                           
                         </div>
                       </div>

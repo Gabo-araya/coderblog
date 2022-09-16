@@ -38,38 +38,15 @@
                   {% for item in object_list %}
                   <tr>
                     <td> {{ item.id }} </td>
-
                     <td> 
-
                       <div class="row">
-                        <div class="col-md-2">
-                          {% if item.image %}
-                          <div class="text-center">
-                            <img class="img img-thumbnail" src="{{ item.image.url }}" width="75" alt="{{ item.name }}" />
-                          </div>
-                          {% endif %}
-                          {% if item.pic %}
-                          <div class="text-center">
-                            <img class="img img-thumbnail" src="{{ item.pic.url }}" width="75" alt="{{ item.name }}" />
-                          </div>
-                          {% endif %}
-                        </div>
-                        <div class="col-md-10">
-                          {% if item.subject %}<p>Asunto: <a href="{% url url_ver item.id %}"><strong>{{ item.subject }}</strong></a></p>{% endif %} 
                           <p>
-                            Enviado por: <em>{{ item.name }} </em> 
-                            {% if item.email %}[{{ item.email }}]{% endif %} 
+                            Búsqueda: <em>{{ item.name }} </em> 
+                            {% if item.created %}[{{ item.created }}]{% endif %} 
                           </p>
-
-                          
-                        </div>
                       </div>
-
-                        
                     </td>
                     <td>
-                      <a href="{% url url_ver item.id %}" class="btn btn-primary btn-round btn-icon waves-effect waves-classic" title="Revisar" data-toggle="tooltip" data-original-title="Revisar">
-                        <i class="ri-link-m"></i></a>
                       <a href="{% url url_eliminar item.id %}" class="btn btn-danger btn-round btn-icon waves-effect waves-classic" title="Eliminar" data-toggle="tooltip" data-original-title="Eliminar">
                         <i class="ri-delete-bin-fill"></i></a>
                     </td>

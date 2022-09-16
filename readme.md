@@ -111,9 +111,11 @@ _Datos de contexto para el uso del sitio web_
 
 ### TODO
 
-- Activar funcionalidad de eliminación de búsquedas (front y back)
+- Activar funcionalidad de eliminación de búsquedas (front y back) -> OK
+- Activar funcionalidad de mensajes de contacto desde frontend -> OK
+- Agregar CkEditor -> OK
+- Activar funcionalidad de mensajes al agregar, modificar, eliminar elementos.
 - Agregar Login
-- Agregar CkEditor
 - Agregar recuperación de contraseña
 - Agregar registro de usuarios
 - Modificar perfil propio

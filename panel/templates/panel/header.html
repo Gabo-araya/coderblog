@@ -3,7 +3,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="{% url 'panel:app_panel_index' %}" class="logo d-flex align-items-center">
             <img src="{% static 'img/logo.png' %}" alt="">
             
             <span class="d-none d-lg-block">Ficticia Inc.</span>
@@ -19,6 +19,13 @@
             </form>
         </div><!-- End Search Bar -->
 
+        <div class="header-nav">
+            <a href="{% url 'app_blog_index' %}" class="btn btn-outline-success" target="_blank">
+                <img src="{% static 'img/logo.png' %}" alt="Sitio web" height="25"/>
+                    Sitio web <i class="bi bi-arrow-up-right-circle"></i>
+                </a>
+        </div><!-- End site link Bar -->
+
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
@@ -33,7 +40,7 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <!--img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"-->
+                        <img src="{% static 'img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2">{{ request.user }}</span>
                     </a><!-- End Profile Iamge Icon -->
 

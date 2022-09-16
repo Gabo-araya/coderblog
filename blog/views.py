@@ -16,16 +16,22 @@ from blog.forms import Mensaje_Form, Buscar_FrontEnd_Form
 #=======================================================================================================================================
 
 def app_blog_index(request, *args, **kwargs):
-    '''Lista de elementos con las que se pueden realizar acciones.'''
+    '''Landing page'''
     
     personas_list = Persona_Model.objects.all()[:3] # Lista de personas
     servicios_list = Servicio_Model.objects.all()[:3] # Lista de servicios
     proyectos_list = Proyecto_Model.objects.all()[:3] # Lista de proyectos
-    articulos_list = Articulo_Model.objects.filter(draft=False).order_by('date')[:3] # Lista de articulos
+    categorias_list = Categoria_Model.objects.all() # Lista de categorías
+    categorias_tuple = []
     paginas_list = Pagina_Model.objects.all() # Lista de paginas
+    articulos_list = Articulo_Model.objects.filter(draft=False).order_by('-date')[:3] # Lista de articulos
+
+    for item in categorias_list:
+        categorias_tuple.append(str(item))
+        
+    tuple(categorias_tuple)
 
     '''Crear mensaje.'''
-    
     form = Mensaje_Form()
     error_message = ''
     success_message = ''
@@ -55,14 +61,6 @@ def app_blog_index(request, *args, **kwargs):
             print("form invalido")
             error_message = 'form invalido'
             
-            
-            
-            
-
-    # else: 
-    #     #ningún mensaje
-    #     error_message = ''
-    #     success_message = ''
 
 
     context = {
@@ -71,6 +69,7 @@ def app_blog_index(request, *args, **kwargs):
         'personas' : personas_list,
         'servicios' : servicios_list,
         'proyectos' : proyectos_list,
+        'categorias' : categorias_tuple,
         'articulos' : articulos_list,
         'paginas' : paginas_list,
         'success_message' : success_message,
@@ -78,10 +77,6 @@ def app_blog_index(request, *args, **kwargs):
     }
     return render(request, 'blog/landing.html', context)
     
-
-
-
-
 
 
 

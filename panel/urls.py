@@ -7,7 +7,27 @@ urlpatterns = [
 
 #index
     path('', panel.views.app_panel_index, name='app_panel_index'),
-    path('resultados_busqueda/', panel.views.resultados_busqueda, name='resultados_busqueda'),
+
+    
+    # # login
+    # path('', login.views.inicio, name='inicio'),
+    # path('entrar/', login.views.entrar, name='entrar'),
+    # path('salir/', login.views.salir, name='salir'),
+    # path('crear_usuario/', login.views.crear_usuario, name='crear_usuario'),
+
+    # path('ver_perfil/', login.views.ver_perfil, name='ver_perfil'),
+    # path('modificar_perfil/', login.views.modificar_perfil, name='modificar_perfil'),
+
+    # # Reset de password
+    # path('reset_password/', auth_views.PasswordResetView.as_view(template_name='login/password_reset.html'),
+    #     name='reset_password'),
+    # path('reset_password_enviado/', auth_views.PasswordResetDoneView.as_view(template_name='login/password_reset_sent.html'), 
+    #     name='password_reset_done'),
+    # path('reset_password_confirmado/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name='login/password_reset_form.html'), 
+    #     name='password_reset_confirm'),
+    # path('reset_password_completado/', auth_views.PasswordResetCompleteView.as_view(template_name='login/password_reset_done.html'), 
+    #     name='password_reset_complete'),
+
 
 #personas 
     path('listar_personas/', panel.views.listar_personas, name='listar_personas'),
@@ -63,14 +83,12 @@ urlpatterns = [
     path('modificar_imagen/<int:id>/', panel.views.modificar_imagen, name='modificar_imagen'),
     path('eliminar_imagen/<int:id>/', panel.views.eliminar_imagen, name='eliminar_imagen'),
 
-#buscar en FrontEnd
+#buscar 
+    path('resultados_busqueda/', panel.views.resultados_busqueda, name='resultados_busqueda'),
     path('listar_busquedas_frontend/', panel.views.listar_busquedas_frontend, name='listar_busquedas_frontend'),
-    path('eliminar_busqueda_frontend/', panel.views.eliminar_busqueda_frontend, name='eliminar_busqueda_frontend'),
-
-#buscar en FrontEnd
+    path('eliminar_busqueda_frontend/<int:id>/', panel.views.eliminar_busqueda_frontend, name='eliminar_busqueda_frontend'),
     path('listar_busquedas_backend/', panel.views.listar_busquedas_backend, name='listar_busquedas_backend'),
-    path('eliminar_busqueda_backend/', panel.views.eliminar_busqueda_backend, name='eliminar_busqueda_backend'),
-
+    path('eliminar_busqueda_backend/<int:id>/', panel.views.eliminar_busqueda_backend, name='eliminar_busqueda_backend'),
 
     #JS-Catalog para mostrar widget admin para fechas y horas
     path('jsi18n', JavaScriptCatalog.as_view(), name='js-catalog'),

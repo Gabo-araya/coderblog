@@ -37,8 +37,8 @@
 
       <li class="nav-item">
         <a class="nav-link {% if 'mensaje' in request.path %} collapsed {% endif %}" href="{% url 'panel:listar_mensajes'%}">
-          <i class="bx bxs-user-pin"></i>
-          <span>Mensajes</span>
+          <i class="bi bi-messenger"></i>
+          <span>Mensajes Contacto</span>
         </a>
       </li><!-- End Mensajes Nav -->
       
@@ -72,6 +72,22 @@
         </a>
       </li><!-- End Imágenes Nav -->
 
+
+      <li class="nav-heading">Búsquedas</li>
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'frontend' in request.path %} collapsed {% endif %}" href="{% url 'panel:listar_busquedas_frontend'%}">
+          <i class="bi bi-search"></i>
+          <span>Búsqueda de sitio web</span>
+        </a>
+      </li><!-- End Búsqueda de sitio web Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {% if 'backend' in request.path %} collapsed {% endif %}" href="{% url 'panel:listar_busquedas_backend'%}">
+          <i class="bi bi-search"></i>
+          <span>Búsqueda de panel admin</span>
+        </a>
+      </li><!-- End Búsqueda de panel admin Nav -->
 
       <li class="nav-heading">Configuración</li>
 

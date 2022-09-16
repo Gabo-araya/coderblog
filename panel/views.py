@@ -39,9 +39,9 @@ def app_panel_index(request, *args, **kwargs):
             'object_url' : 'panel:listar_proyectos',
         },
         {
-            'object_title' : 'Mensajes',
-            'icon' : 'bx bxs-user-pin',
-            'object_description' : 'Agregar o modificar mensajes',
+            'object_title' : 'Mensajes Contacto',
+            'icon' : 'bi bi-messenger',
+            'object_description' : 'Agregar o modificar mensajes del formulario de contacto',
             'object_url' : 'panel:listar_mensajes',
         },
         {
@@ -71,13 +71,13 @@ def app_panel_index(request, *args, **kwargs):
         
         {
             'object_title' : 'Búsquedas de FrontEnd',
-            'icon' : 'bx bxs-image',
+            'icon' : 'bi bi-search',
             'object_description' : 'Agregar o modificar búsquedas de FrontEnd',
             'object_url' : 'panel:listar_busquedas_frontend',
         },
         {
             'object_title' : 'Búsquedas de BackEnd',
-            'icon' : 'bx bxs-image',
+            'icon' : 'bi bi-search',
             'object_description' : 'Agregar o modificar búsquedas de BackEnd',
             'object_url' : 'panel:listar_busquedas_backend',
         },
@@ -556,7 +556,7 @@ def listar_mensajes(request, *args, **kwargs):
     object_list = Mensaje_Model.objects.all() # Lista de objetos
     
     context = {
-        'page' : 'Mensajes',
+        'page' : 'Mensajes Contacto',
         'icon' : 'bx bx-file',
         'singular' : 'mensaje',
         'plural' : 'mensajes',
@@ -576,7 +576,7 @@ def ver_mensaje(request, id, *args, **kwargs):
     itemObj = Mensaje_Model.objects.get(id=id) 
     
     context = {
-        'page' : 'Detalle de Mensaje',
+        'page' : 'Detalle de Mensajes Contacto',
         'icon' : 'bx bx-file',
         'singular' : 'mensaje',
         'plural' : 'mensajes',
@@ -655,7 +655,7 @@ def eliminar_mensaje(request, id, *args, **kwargs):
         return redirect('panel:listar_mensajes')
 
     context = {
-        'page' : 'Eliminar Mensaje',
+        'page' : 'Eliminar Mensajes Contacto',
         'icon' : 'bx bx-file',
         'singular' : 'mensaje',
         'plural' : 'mensajes',
@@ -1168,14 +1168,14 @@ def listar_busquedas_frontend(request, *args, **kwargs):
     object_list = Buscar_FrontEnd_Model.objects.all() # Lista de objetos
     
     context = {
-        'page' : 'Búsquedas',
+        'page' : 'Búsquedas de sitio web',
         'singular' : 'búsqueda',
         'plural' : 'búsquedas',
         'url_activo_index' : 'panel:listar_busquedas_frontend',
         'url_eliminar' : 'panel:eliminar_busqueda_frontend',
         'object_list': object_list
     }
-    return render(request, 'panel/listar_busquedas.html', context)
+    return render(request, 'panel/generic_list_search.html', context)
 
 
 def listar_busquedas_backend(request, *args, **kwargs):
@@ -1184,14 +1184,14 @@ def listar_busquedas_backend(request, *args, **kwargs):
     object_list = Buscar_BackEnd_Model.objects.all() # Lista de objetos
     
     context = {
-        'page' : 'Búsquedas',
+        'page' : 'Búsquedas de panel de administración',
         'singular' : 'búsqueda',
         'plural' : 'búsquedas',
         'url_activo_index' : 'panel:listar_busquedas_backend',
         'url_eliminar' : 'panel:eliminar_busqueda_backend',
         'object_list': object_list
     }
-    return render(request, 'panel/listar_busquedas.html', context)
+    return render(request, 'panel/generic_list_search.html', context)
 
 
 def eliminar_busqueda_frontend(request, id, *args, **kwargs):
@@ -1204,7 +1204,7 @@ def eliminar_busqueda_frontend(request, id, *args, **kwargs):
         return redirect('panel:listar_busquedas_frontend')
 
     context = {
-        'page' : 'Eliminar búsqueda',
+        'page' : 'Eliminar búsqueda de sitio web',
         'singular' : 'búsqueda',
         'plural' : 'búsquedas',
         'url_activo_index' : 'panel:listar_busquedas_frontend',
@@ -1224,7 +1224,7 @@ def eliminar_busqueda_backend(request, id, *args, **kwargs):
         return redirect('panel:listar_busquedas_backend')
 
     context = {
-        'page' : 'Eliminar búsqueda',
+        'page' : 'Eliminar búsqueda de panel de administración',
         'singular' : 'búsqueda',
         'plural' : 'búsquedas',
         'url_activo_index' : 'panel:listar_busquedas_backend',
@@ -1232,3 +1232,213 @@ def eliminar_busqueda_backend(request, id, *args, **kwargs):
         'item': itemObj,
     }
     return render(request, 'panel/generic_delete_object.html', context)
+
+
+
+#=======================================================================================================================================
+# Vistas para Login
+#=======================================================================================================================================
+
+
+#@authenticated_user
+def entrar(request, *args, **kwargs):
+    '''Página de Login de la plataforma. '''
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        # autenticar al usuario
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            # loguear al ususario con el usuario recién creado
+            login(request, user)
+            return redirect('inicio')
+
+        else:
+            messages.info(request, 'Ocurrió un error: usuario o password incorrecto.')
+
+    context = {
+        'page': 'Entrar',
+
+    }
+
+    return render(request, 'login/login.html', context)
+
+
+def salir(request, *args, **kwargs):
+    logout(request)
+    return redirect('entrar')
+
+
+
+#@login_required(login_url='entrar')
+def inicio(request, *args, **kwargs):
+    group = None
+    if request.user.groups.exists():
+        group = request.user.groups.all()[0].name
+    
+    # Grupos de uusuarios
+    # admin
+    # gerente
+    # controlador
+    # supervisor
+    # guardia
+    # cliente
+    # Instalación
+
+
+    if group == 'admin':
+
+        clientes = Cliente.objects.all()
+        instalaciones = Instalacion.objects.all()
+        personas = Persona.objects.all()
+    
+        total_clientes = clientes.count()
+        total_instalaciones = instalaciones.count()
+        total_personas = personas.count()
+        
+
+        context = {
+            'page': 'Dashboard Admin',
+            'clientes' : clientes,
+            'instalaciones' : instalaciones,
+            'personas' : personas,
+
+            'total_clientes' : total_clientes,
+            'total_instalaciones' : total_instalaciones,
+            'total_personas' : total_personas,
+        }   
+        return render(request, 'login/dashboard_admin.html', context)
+
+
+
+    else:
+        return redirect('salir')
+
+
+
+# ===============================================================================================
+# CREAR USUARIO
+# ===============================================================================================
+
+
+#@login_required(login_url='entrar')
+def crear_usuario(request, *args, **kwargs):    
+    # if request.user.is_authenticated:
+    #     return redirect('inicio')
+    # else:
+    #     (revisar formulario enviado vía POST)
+
+
+    # Para llamar al formulario predeterminado de Django se usa esta línea
+    #form = UserCreationForm()
+
+    # Invocamos al formulario customizado con email
+    form = CustomUserCreationForm()
+
+    if request.method == 'POST':
+        # para guardar los datos con el formulario predeterminado de Django
+        #form = UserCreationForm(request.POST)
+
+        # para guardar datos con formulario customizado con email
+        form = CustomUserCreationForm(request.POST)
+        
+        if form.is_valid():
+            # user = form.save(commit=False)
+            user = form.save()
+            username = form.clean_data.get('username')
+            messages.success(request, 'Cuenta creada correctamente.')
+
+            # esto es para asociar todos los nuevos usuarios al grupo 'cliente'
+            # group = Group.objects.get('cliente')
+            # user.groups.add(group)
+            # permite asociar un cliente a un usuario nuevo
+            # Cliente.objects.create(user=user,)
+
+            if user is not None:
+                # loguear al ususario con el usuario recién creado
+                login(request, user)
+                return redirect('inicio')
+
+    context = {
+        'page': 'Crear usuario',
+        'form' : form,
+        # 'clientes' : clientes,
+        # 'total_clientes' : total_clientes,
+        # 'total_pedidos' : total_pedidos,
+        # 'pendientes' : pendientes,
+        # 'entregados' : entregados,
+        # 'enviados' : enviados,
+        #'productos' : productos,
+    }
+
+    return render(request, 'login/crear_usuario.html', context)
+
+
+
+# ===============================================================================================
+# PERFIL
+# ===============================================================================================
+
+#@login_required(login_url='entrar')
+def modificar_perfil(request, *args, **kwargs):
+
+    cliente = request.user.cliente
+    form = Persona_Form(instance=cliente)
+    # print(cliente)
+
+    group = None
+    if request.user.groups.exists():
+        group = request.user.groups.all()[0].name
+
+    if group == 'cliente':
+        # esto permite obtener el nombre del cliente asociado al usuario
+        # cliente = request.user.cliente.nombre
+        cliente = request.user.cliente
+
+
+        if request.method == 'POST':
+            form = Persona_Form(request.POST, request.FILES, instance=cliente)
+            if form.is_valid():
+                form.save()
+                
+                return redirect('inicio')
+
+        context = {
+            'page': 'Ver perfil',
+            'cliente' : cliente,
+            'form' : form,
+        }   
+
+        return render(request, 'login/modificar_perfil_cliente.html', context)
+
+
+
+def ver_perfil(request, id, *args, **kwargs):
+    '''Sirve para revisar un elemento.'''
+    itemObj = Persona.objects.get(id=id)
+    
+    context = {
+        'page' : 'Revisar perfil',
+        'icon' : 'person',
+        'color' : 'info',
+        'color_table' : 'default',
+        'description' : '',
+        'singular' : 'persona',
+        'plural' : 'personas',
+        'url_activo_index' : 'persona_index',
+        'url_inactivo_index' : 'persona_inactivo_index',
+        'url_crear' : 'persona_crear',
+        'url_ver' : 'persona_ver',
+        'url_editar' : 'persona_editar',
+        'url_desactivar' : 'persona_desactivar',
+        'url_activar' : 'persona_activar',
+        'url_eliminar' : 'persona_eliminar',
+        'asdf' : asdf,
+        'item': itemObj
+    }
+    return render(request, 'login/ver_perfil_persona.html', context)
+
+
