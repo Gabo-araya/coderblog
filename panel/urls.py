@@ -1,4 +1,6 @@
-from django.urls import path
+from django.urls import path, include
+from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 from django.views.i18n import JavaScriptCatalog
 import panel.views
 
@@ -6,17 +8,19 @@ app_name = 'panel'
 urlpatterns = [
 
 #index
-    path('', panel.views.app_panel_index, name='app_panel_index'),
+    # path('', panel.views.app_panel_index, name='app_panel_index'),
 
     
-    # # login
-    # path('', login.views.inicio, name='inicio'),
-    # path('entrar/', login.views.entrar, name='entrar'),
-    # path('salir/', login.views.salir, name='salir'),
-    # path('crear_usuario/', login.views.crear_usuario, name='crear_usuario'),
+    # login
+    path('entrar/', panel.views.entrar, name='entrar'),
+    path('salir/', panel.views.salir, name='salir'),
 
-    # path('ver_perfil/', login.views.ver_perfil, name='ver_perfil'),
-    # path('modificar_perfil/', login.views.modificar_perfil, name='modificar_perfil'),
+    # Dashboard
+    path('', panel.views.app_panel_index, name='app_panel_index'),
+
+    # path('crear_usuario/', login.views.crear_usuario, name='crear_usuario'),
+    # path('ver_perfil/', panel.views.ver_perfil, name='ver_perfil'),
+    # path('modificar_perfil/', panel.views.modificar_perfil, name='modificar_perfil'),
 
     # # Reset de password
     # path('reset_password/', auth_views.PasswordResetView.as_view(template_name='login/password_reset.html'),
@@ -27,6 +31,10 @@ urlpatterns = [
     #     name='password_reset_confirm'),
     # path('reset_password_completado/', auth_views.PasswordResetCompleteView.as_view(template_name='login/password_reset_done.html'), 
     #     name='password_reset_complete'),
+
+
+    #JS-Catalog para mostrar widget admin para fechas y horas
+    path('jsi18n', JavaScriptCatalog.as_view(), name='js-catalog'),
 
 
 #personas 
@@ -90,7 +98,5 @@ urlpatterns = [
     path('listar_busquedas_backend/', panel.views.listar_busquedas_backend, name='listar_busquedas_backend'),
     path('eliminar_busqueda_backend/<int:id>/', panel.views.eliminar_busqueda_backend, name='eliminar_busqueda_backend'),
 
-    #JS-Catalog para mostrar widget admin para fechas y horas
-    path('jsi18n', JavaScriptCatalog.as_view(), name='js-catalog'),
 
 ]
