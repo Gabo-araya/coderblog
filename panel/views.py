@@ -229,13 +229,13 @@ def entrar(request, *args, **kwargs):
                 query_string =  urlencode({'status': 'ERROR'})
                 url = '{}?{}'.format(base_url, query_string)
                 return redirect(url)
-                #return redirect('entrar')
+                #return redirect('panel:entrar')
         else:
             base_url = reverse('panel:entrar')
             query_string =  urlencode({'status': 'ERROR'})
             url = '{}?{}'.format(base_url, query_string)
             return redirect(url)
-            #return redirect('entrar')
+            #return redirect('panel:entrar')
 
     if request.method == 'GET':
         status_get = request.GET.get('status')
@@ -1566,3 +1566,5 @@ def ver_perfil(request, id, *args, **kwargs):
     return render(request, 'login/ver_perfil_persona.html', context)
 
 
+def handler404(request, exception):
+    return render(request, '404.html', status=404)

@@ -30,6 +30,8 @@ urlpatterns = [
     
 ]
 
+handler404 = 'panel.views.handler404' 
+
 admin.site.index_title = 'Sitio de Administración'
 admin.site.site_header = 'Panel de Administración'
 admin.site.site_title = 'Ficticia Inc.'

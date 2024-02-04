@@ -114,13 +114,13 @@ _Datos de contexto para el uso del sitio web_
 - Activar funcionalidad de eliminación de búsquedas (front y back) -> OK
 - Activar funcionalidad de mensajes de contacto desde frontend -> OK
 - Agregar CkEditor -> OK
+- Agregar Login -> OK
+- Configurar página 404 -> en proceso
 - Activar funcionalidad de mensajes al agregar, modificar, eliminar elementos.
-- Agregar Login
 - Agregar recuperación de contraseña
 - Agregar registro de usuarios
 - Modificar perfil propio
 - Diferenciar tipos de usuario
-- Configurar página 404
 
 ## Herramientas de construcción 🛠️
 

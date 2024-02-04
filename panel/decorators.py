@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 def authenticated_user(view_func):
     def wrapper_func(request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect('app_panel_index')
+            return redirect('panel:app_panel_index')
         else:
             return view_func(request, *args, **kwargs)
 

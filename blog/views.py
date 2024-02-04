@@ -204,3 +204,6 @@ def crear_mensaje(request, *args, **kwargs):
     }
     return render(request, 'panel/generic_file_form.html', context)
 
+
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
