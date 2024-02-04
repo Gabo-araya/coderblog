@@ -20,6 +20,9 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.views.i18n import JavaScriptCatalog
 
+from django.conf.urls import handler404, handler500
+from panel.views import handler404
+
 urlpatterns = [
     path('cp/', admin.site.urls),
     

@@ -4,6 +4,7 @@ from django.urls import reverse
 from urllib.parse import urlencode
 from django.db.models import Q
 from django.template.defaultfilters import slugify
+from django.http import  HttpResponseNotFound
 
 
 # importación de funcionalidad para creación de usuarios
@@ -296,49 +297,49 @@ def salir(request, *args, **kwargs):
 
 
 
-@login_required(login_url='entrar')
-def inicio(request, *args, **kwargs):
-    group = None
-    if request.user.groups.exists():
-        group = request.user.groups.all()[0].name
+# @login_required(login_url='entrar')
+# def inicio(request, *args, **kwargs):
+#     group = None
+#     if request.user.groups.exists():
+#         group = request.user.groups.all()[0].name
     
-    # Grupos de uusuarios
-    # admin
-    # gerente
-    # controlador
-    # supervisor
-    # guardia
-    # cliente
-    # Instalación
+#     # Grupos de uusuarios
+#     # admin
+#     # gerente
+#     # controlador
+#     # supervisor
+#     # guardia
+#     # cliente
+#     # Instalación
 
 
-    if group == 'admin':
+#     if group == 'admin':
 
-        clientes = Cliente.objects.all()
-        instalaciones = Instalacion.objects.all()
-        personas = Persona.objects.all()
+#         clientes = Cliente.objects.all()
+#         instalaciones = Instalacion.objects.all()
+#         personas = Persona.objects.all()
     
-        total_clientes = clientes.count()
-        total_instalaciones = instalaciones.count()
-        total_personas = personas.count()
+#         total_clientes = clientes.count()
+#         total_instalaciones = instalaciones.count()
+#         total_personas = personas.count()
         
 
-        context = {
-            'page': 'Dashboard Admin',
-            'clientes' : clientes,
-            'instalaciones' : instalaciones,
-            'personas' : personas,
+#         context = {
+#             'page': 'Dashboard Admin',
+#             'clientes' : clientes,
+#             'instalaciones' : instalaciones,
+#             'personas' : personas,
 
-            'total_clientes' : total_clientes,
-            'total_instalaciones' : total_instalaciones,
-            'total_personas' : total_personas,
-        }   
-        return render(request, 'login/dashboard_admin.html', context)
+#             'total_clientes' : total_clientes,
+#             'total_instalaciones' : total_instalaciones,
+#             'total_personas' : total_personas,
+#         }   
+#         return render(request, 'login/dashboard_admin.html', context)
 
 
 
-    else:
-        return redirect('panel:salir')
+#     else:
+#         return redirect('panel:salir')
 
 
 
@@ -1448,57 +1449,57 @@ def eliminar_busqueda_backend(request, id, *args, **kwargs):
 # ===============================================================================================
 
 
-@login_required(login_url='entrar')
-def crear_usuario(request, *args, **kwargs):    
-    # if request.user.is_authenticated:
-    #     return redirect('panel:inicio')
-    # else:
-    #     (revisar formulario enviado vía POST)
+# @login_required(login_url='entrar')
+# def crear_usuario(request, *args, **kwargs):    
+#     # if request.user.is_authenticated:
+#     #     return redirect('panel:inicio')
+#     # else:
+#     #     (revisar formulario enviado vía POST)
 
 
-    # Para llamar al formulario predeterminado de Django se usa esta línea
-    #form = UserCreationForm()
+#     # Para llamar al formulario predeterminado de Django se usa esta línea
+#     #form = UserCreationForm()
 
-    # Invocamos al formulario customizado con email
-    form = CustomUserCreationForm()
+#     # Invocamos al formulario customizado con email
+#     form = CustomUserCreationForm()
 
-    if request.method == 'POST':
-        # para guardar los datos con el formulario predeterminado de Django
-        #form = UserCreationForm(request.POST)
+#     if request.method == 'POST':
+#         # para guardar los datos con el formulario predeterminado de Django
+#         #form = UserCreationForm(request.POST)
 
-        # para guardar datos con formulario customizado con email
-        form = CustomUserCreationForm(request.POST)
+#         # para guardar datos con formulario customizado con email
+#         form = CustomUserCreationForm(request.POST)
         
-        if form.is_valid():
-            # user = form.save(commit=False)
-            user = form.save()
-            username = form.clean_data.get('username')
-            messages.success(request, 'Cuenta creada correctamente.')
+#         if form.is_valid():
+#             # user = form.save(commit=False)
+#             user = form.save()
+#             username = form.clean_data.get('username')
+#             messages.success(request, 'Cuenta creada correctamente.')
 
-            # esto es para asociar todos los nuevos usuarios al grupo 'cliente'
-            # group = Group.objects.get('cliente')
-            # user.groups.add(group)
-            # permite asociar un cliente a un usuario nuevo
-            # Cliente.objects.create(user=user,)
+#             # esto es para asociar todos los nuevos usuarios al grupo 'cliente'
+#             # group = Group.objects.get('cliente')
+#             # user.groups.add(group)
+#             # permite asociar un cliente a un usuario nuevo
+#             # Cliente.objects.create(user=user,)
 
-            if user is not None:
-                # loguear al ususario con el usuario recién creado
-                login(request, user)
-                return redirect('panel:inicio')
+#             if user is not None:
+#                 # loguear al ususario con el usuario recién creado
+#                 login(request, user)
+#                 return redirect('panel:inicio')
 
-    context = {
-        'page': 'Crear usuario',
-        'form' : form,
-        # 'clientes' : clientes,
-        # 'total_clientes' : total_clientes,
-        # 'total_pedidos' : total_pedidos,
-        # 'pendientes' : pendientes,
-        # 'entregados' : entregados,
-        # 'enviados' : enviados,
-        #'productos' : productos,
-    }
+#     context = {
+#         'page': 'Crear usuario',
+#         'form' : form,
+#         # 'clientes' : clientes,
+#         # 'total_clientes' : total_clientes,
+#         # 'total_pedidos' : total_pedidos,
+#         # 'pendientes' : pendientes,
+#         # 'entregados' : entregados,
+#         # 'enviados' : enviados,
+#         #'productos' : productos,
+#     }
 
-    return render(request, 'login/crear_usuario.html', context)
+#     return render(request, 'login/crear_usuario.html', context)
 
 
 
@@ -1567,4 +1568,5 @@ def ver_perfil(request, id, *args, **kwargs):
 
 
 def handler404(request, exception):
-    return render(request, '404.html', status=404)
+    # return render(request, 'panel/404.html', status=404)
+    return HttpResponseNotFound(render(request, 'panel/404.html'))

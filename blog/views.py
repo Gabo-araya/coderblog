@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, request
 from django.urls import reverse
 from django.db.models import Q
+from django.http import  HttpResponseNotFound
 
 # Importación de modelos
 from panel.models import Persona_Model, Servicio_Model, Proyecto_Model, Mensaje_Model, Buscar_FrontEnd_Model
@@ -206,4 +207,5 @@ def crear_mensaje(request, *args, **kwargs):
 
 
 def handler404(request, exception):
-    return render(request, '404.html', status=404)
+    # return render(request, 'panel/404.html', status=404)
+    return HttpResponseNotFound(render(request, 'panel/404.html'))
