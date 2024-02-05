@@ -8,7 +8,7 @@
 {% block content %}
 
   <!--/ Intro Skew Star /-->
-  <div id="inicio" class="intro route bg-image" style="background-image: url({% static 'front/img/intro-bg.jpg' %})">
+  <div id="inicio" class="intro route bg-image" style="background-image: url({% static 'blog/img/intro-bg.jpg' %})">
     <div class="overlay-itro"></div>
     <div class="intro-content display-table">
       <div class="table-cell">
@@ -77,7 +77,7 @@
                       <div class="col-sm-6 col-md-5">
                         <div class="about-img">
                           <!--img src="img/testimonial-2.jpg" class="img-fluid rounded b-shadow-a" alt=""-->
-                          <!--img src="{% static 'front/img/testimonial-2.jpg' %}" class="img-fluid rounded b-shadow-a" alt=""-->
+                          <!--img src="{% static 'blog/img/testimonial-2.jpg' %}" class="img-fluid rounded b-shadow-a" alt=""-->
                           <img src="{{ persona.image.url }}" class="img-fluid rounded b-shadow-a img-thumbnail rounded-circle" height="100" alt="{{ persona.name }}">
                           
                         </div>
@@ -269,7 +269,7 @@
             <div class="card-footer">
               <div class="post-author">
                 <!--a href="#"-->
-                  <img src="{% static 'front/img/testimonial-2.jpg' %}" alt="" class="avatar rounded-circle">
+                  <img src="{% static 'blog/img/testimonial-2.jpg' %}" alt="" class="avatar rounded-circle">
                   <span class="author">{{ articulo.fk_autor }}</span>
                 <!--/a-->
               </div>
@@ -295,7 +295,7 @@
 
 
   <!--/ Section Contact-Footer Star /-->
-  <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static 'front/img/overlay-bg.jpg' %})">
+  <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static 'blog/img/overlay-bg.jpg' %})">
     <div class="overlay-mf"></div>
 
       <!-- Form Contacto -->
