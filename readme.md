@@ -4,7 +4,7 @@ _Sitio web con funcionalidad de blog, búsqueda de artículos y Panel de adminis
 
 Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas.
 
-## Pre-requisitos 📋
+## Pre-requisitos
 
 _Esta es una lista de los paquetes que deben estar instalados previamente:_
 
@@ -16,11 +16,12 @@ _Esta es una lista de los paquetes que deben estar instalados previamente:_
 * Pip
 	- Gestor de instalación de paquetes PIP
 	- [Ayuda - https://tecnonucleous.com/2018/01/28/como-instalar-pip-para-python-en-windows-mac-y-linux/](https://tecnonucleous.com/2018/01/28/como-instalar-pip-para-python-en-windows-mac-y-linux/)
+
 * Virtualenv
 	- Creador de entornos virtuales para Python
 	- [Ayuda - https://techexpert.tips/es/windows-es/instalacion-del-entorno-virtual-de-python-en-windows/](https://techexpert.tips/es/windows-es/instalacion-del-entorno-virtual-de-python-en-windows/)
 
-## Instalación pre-requisitos 🔧
+### Instalación pre-requisitos
 
 Muchas veces tenemos ese problema común de no poder instalar ciertas librerías o realizar configuraciones para poder desarrollar en Windows para Web y es por ello que en éste tutorial vamos a ver los pasos para instalar Python y configurarlo con Pip y Virtualenv para así poder empezar a desarrollar aplicaciones basadas en éste lenguaje e instalar Django para crear aplicaciones web. [Ver video -> **https://www.youtube.com/watch?v=sG7Q-r_SZhA**](https://www.youtube.com/watch?v=sG7Q-r_SZhA)
 
@@ -48,7 +49,7 @@ Muchas veces tenemos ese problema común de no poder instalar ciertas librerías
 8. Finalmente desactivamos el entorno virtual
 	- `deactivate`
 
-## Instalación Local 🚀
+### Instalación Local
 
 Seguir los siguientes pasos para la instalación local.
 
@@ -63,23 +64,23 @@ Seguir los siguientes pasos para la instalación local.
 3. Revisar settings.py y .env
 	- Revisar que la sección de base de datos esté configurada para que trabaje con la base de datos SQLite en local.
 
-3. Realizar migraciones
+4. Realizar migraciones
 	- Crear archivos de migración: `python3 manage.py makemigrations`
 	- Realizar migraciones`python3 manage.py migrate`
 
-4. Crear superusuario
+5. Crear superusuario
 	- `python3 manage.py createsuperuser`
 	- Si se usa Cpanel es necesario indicar el encoding primero vía terminal: 
 		-`export PYTHONIOENCODING="UTF-8"; python3.6 manage.py createsuperuser`
 
-5. Obtener archivos estáticos
+6. Obtener archivos estáticos
 	- `python3 manage.py collectstatic`
 
-6. Iniciar el servidor
+7. Iniciar el servidor
 	- `python3 manage.py runserver`
 	- Iniciar en un puerto específico (:9500):`python3 manage.py runserver 9500`
 
-## Datos de contexto 📦
+## Datos de contexto
 
 _Datos de contexto para el uso del sitio web_
 
@@ -92,7 +93,7 @@ _Datos de contexto para el uso del sitio web_
 
 ### Funcionalidades
 
-3. Navegación por contenidos del sitio
+1. Navegación por contenidos del sitio
    - Muestra un resumen del propósito del sitio y sus funcionalidades.
    - Cuenta con las siguientes páginas: Nosotros, Servicios, Proyectos, Blog, Visión y Footer.
    - Acceso a lista de artículos desde el footer
@@ -122,7 +123,7 @@ _Datos de contexto para el uso del sitio web_
 - Modificar perfil propio
 - Diferenciar tipos de usuario
 
-## Herramientas de construcción 🛠️
+## Herramientas de construcción
 
 _Estas son las herramientas que hemos utilizado en nuestro proyecto_
 
